@@ -29,10 +29,11 @@
 
                     <aside class="sidebar h-100">
 
+                        <!--------------- LEFT HEADER BAR --------------------->
                         <div class="left-header inner-header d-flex align-center justify-between">
                             <div class="d-flex align-center">
-                                <img class="rounded-profile-picture" src="img/avatar_1.jpg" alt="">
-                                <span class="contact-name">Name</span>
+                                <img class="rounded-profile-picture" src="img/avatar_2.jpg" alt="">
+                                <span class="contact-name">Francesco</span>
                             </div>
 
                             <div class="icon-box">
@@ -42,6 +43,7 @@
                             </div>
                         </div>
 
+                        <!-------------------- NOTIFICATION BAR --------------------->
                         <div class="notification-bar d-flex align-center">
                             <div class="bell-icon">
                                 <i class="fa-solid fa-bell-slash"></i>
@@ -54,112 +56,20 @@
 
                         <div class="search-bar d-flex align-center">
                             <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <input class="input-search" type="text"
-                                placeholder="Cerca o inizia una nuova conversazione" />
+                            <input class="input-search" type="text" placeholder="Cerca o inizia una nuova conversazione" />
                         </div>
 
-                        <!------------------ contact list ---------------------->
+                        <!------------------ CONTACTS LIST ---------------------->
                         <div class="contact-list-container">
                             <ul>
-                                <li>
-                                    <div class="card d-flex align-center justify-between">
+                                <li v-for="(element, index) in contacts">
+                                    <div class="card d-flex align-center justify-between" @click="clickActiveContact(index)">
                                         <div class="d-flex align-center">
-                                            <img class="rounded-profile-picture" src="img/avatar_1.jpg" alt="">
+                                            <img class="rounded-profile-picture" :src="element.avatar" :alt="element.name">
 
                                             <div class="card-text-box">
-                                                <h4 class="card-name">Mario</h4>
-                                                <span class="card-last-mesage">Ultimo messaggio inviato</span>
-                                            </div>
-                                        </div>
-                                        <div class="last-seen">12:00</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card d-flex align-center justify-between">
-                                        <div class="d-flex align-center">
-                                            <img class="rounded-profile-picture" src="img/avatar_1.jpg" alt="">
-
-                                            <div class="card-text-box">
-                                                <h4 class="card-name">Mario</h4>
-                                                <span class="card-last-mesage">Ultimo messaggio inviato</span>
-                                            </div>
-                                        </div>
-                                        <div class="last-seen">12:00</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card d-flex align-center justify-between">
-                                        <div class="d-flex align-center">
-                                            <img class="rounded-profile-picture" src="img/avatar_1.jpg" alt="">
-
-                                            <div class="card-text-box">
-                                                <h4 class="card-name">Mario</h4>
-                                                <span class="card-last-mesage">Ultimo messaggio inviato</span>
-                                            </div>
-                                        </div>
-                                        <div class="last-seen">12:00</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card d-flex align-center justify-between">
-                                        <div class="d-flex align-center">
-                                            <img class="rounded-profile-picture" src="img/avatar_1.jpg" alt="">
-
-                                            <div class="card-text-box">
-                                                <h4 class="card-name">Mario</h4>
-                                                <span class="card-last-mesage">Ultimo messaggio inviato</span>
-                                            </div>
-                                        </div>
-                                        <div class="last-seen">12:00</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card d-flex align-center justify-between">
-                                        <div class="d-flex align-center">
-                                            <img class="rounded-profile-picture" src="img/avatar_1.jpg" alt="">
-
-                                            <div class="card-text-box">
-                                                <h4 class="card-name">Mario</h4>
-                                                <span class="card-last-mesage">Ultimo messaggio inviato</span>
-                                            </div>
-                                        </div>
-                                        <div class="last-seen">12:00</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card d-flex align-center justify-between">
-                                        <div class="d-flex align-center">
-                                            <img class="rounded-profile-picture" src="img/avatar_1.jpg" alt="">
-
-                                            <div class="card-text-box">
-                                                <h4 class="card-name">Mario</h4>
-                                                <span class="card-last-mesage">Ultimo messaggio inviato</span>
-                                            </div>
-                                        </div>
-                                        <div class="last-seen">12:00</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card d-flex align-center justify-between">
-                                        <div class="d-flex align-center">
-                                            <img class="rounded-profile-picture" src="img/avatar_1.jpg" alt="">
-
-                                            <div class="card-text-box">
-                                                <h4 class="card-name">Mario</h4>
-                                                <span class="card-last-mesage">Ultimo messaggio inviato</span>
-                                            </div>
-                                        </div>
-                                        <div class="last-seen">12:00</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card d-flex align-center justify-between">
-                                        <div class="d-flex align-center">
-                                            <img class="rounded-profile-picture" src="img/avatar_1.jpg" alt="">
-
-                                            <div class="card-text-box">
-                                                <h4 class="card-name">Mario</h4>
-                                                <span class="card-last-mesage">Ultimo messaggio inviato</span>
+                                                <h4 class="card-name">{{element.name}}</h4>
+                                                <span class="card-last-message">Ultimo messaggio inviato</span>
                                             </div>
                                         </div>
                                         <div class="last-seen">12:00</div>
@@ -170,16 +80,16 @@
                     </aside>
 
 
-
-                    <div class="main-mesages h-100">
+                    <!---------------------- RIGHT HEADER BAR ------------------->
+                    <div class="main-messages h-100">
                         <div class="right-header inner-header d-flex align-center justify-between">
 
                             <div class="d-flex align-center">
-                                <img class="rounded-profile-picture" src="img/avatar_1.jpg" alt="">
+                                <img class="rounded-profile-picture" :src="contacts[selectedContact].avatar" :alt="contacts[selectedContact].name">
 
                                 <div class="card-text-box">
-                                    <h4 class="card-name">Mario</h4>
-                                    <span class="card-last-mesage">Ultimo messaggio inviato</span>
+                                    <h4 class="card-name">{{contacts[selectedContact].name}}</h4>
+                                    <span class="card-last-message">Ultimo accesso oggi alle 12</span>
                                 </div>
                             </div>
 
@@ -190,23 +100,20 @@
                             </div>
                         </div>
 
-                        <div class="mesage-body">
-                            <div class="mesage-box">
-                                <div class="mesage-card recived-mesage">
-                                    <p class="mesage-text">Ciao sono mario come stai?</p>
-                                    <div class="time-of-mesage">12:00</div>
-                                </div>
-                            </div>
-
-                                <div class="mesage-card sent-mesage">
-                                    <p class="mesage-text">Ciao sono mario come stai?</p>
-                                    <div class="time-of-mesage">12:00</div>
+                        <!------------------ MESSAGES IN CURRENT CONVERSATION ------------------->
+                        <div class="message-body">
+                                <div v-for="message in contacts[selectedContact].messages" class="message-box" :class="(message.status == 'sent') ? 'sent-box':'recived-box'">
+                                    <div class="message-card" :class="(message.status == 'sent') ? 'sent-message':'recived-message'">
+                                        <p class="message-text">{{message.message}}</p>
+                                        <div class="time-of-message">12:00</div>
+                                    </div>
                                 </div>
                         </div>
 
+                        <!------------------------ WRITE NE MESSAGE --------------------------------->
                         <div class="input-bar d-flex align-center ">
                             <i class="fa-regular fa-face-smile"></i>
-                            <input class="mesage-input-box" type="text" placeholder="Scrivi un messaggio">
+                            <input v-model="newMessage" @keyup.enter="pushMessage"  class="message-input-box" type="text" placeholder="Scrivi un messaggio">
                             <i class="fa-solid fa-microphone"></i>
                         </div>
                     </div>
