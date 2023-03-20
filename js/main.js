@@ -1,3 +1,5 @@
+var DateTime = luxon.DateTime;
+
 const { createApp } = Vue
 
 createApp({
@@ -170,6 +172,8 @@ createApp({
       selectedContact: 0,
       newMessage: "",
       inputFilter: "",
+      currentDate: "",
+      isVisible: false,
     }
   },
   methods: {
@@ -177,16 +181,18 @@ createApp({
         this.selectedContact = index;
     },
     pushMessage(){
+      this.currentDate = DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS	);
       const newObject = {
-        date: '10/01/2020 15:51:00',
+        date: this.currentDate,
         message: this.newMessage,
         status: 'sent'
       }
       this.contacts[this.selectedContact].messages.push(newObject);
       this.newMessage = '';
       setTimeout(() => {
+        this.currentDate = DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS	);
         const newObject = {
-          date: '10/01/2020 15:51:00',
+          date: this.currentDate,
           message: 'ok',
           status: 'recived'
         }
@@ -201,6 +207,9 @@ createApp({
           element.visible = false;
         }
       })
+      },
+      onClickVisible(){
+        this.isVisible = !this.isVisible;
       }
     }
 }).mount('#app')
