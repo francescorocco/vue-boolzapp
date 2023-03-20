@@ -100,10 +100,10 @@
 
                         <!------------------ MESSAGES IN CURRENT CONVERSATION ------------------->
                         <div class="message-body">
-                                <div v-for="message in contacts[selectedContact].messages" class="message-box" :class="(message.status == 'sent') ? 'sent-box':'recived-box'">
+                                <div v-for="(message, index) in contacts[selectedContact].messages" class="message-box" :class="(message.status == 'sent') ? 'sent-box':'recived-box'">
                                     <div class="message-card  dropdown" :class="(message.status == 'sent') ? 'sent-message':'recived-message'">
-                                        <i @click="onClickVisible" class="fa-solid fa-chevron-down"></i>
-                                        <div :class="isVisible? 'd-block':'' " class="dropdown-content">
+                                        <i @click="onClickVisible(index)" class="fa-solid fa-chevron-down"></i>
+                                        <div :class="isVisible && currentMessage == index? 'd-block':''" class="dropdown-content">
                                             <div>Info messaggio</div>
                                             <div>Cancella Messaggio</div>
                                         </div>

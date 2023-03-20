@@ -170,6 +170,7 @@ createApp({
       ],
 
       selectedContact: 0,
+      currentMessage:null,
       newMessage: "",
       inputFilter: "",
       currentDate: "",
@@ -179,6 +180,8 @@ createApp({
   methods: {
     clickActiveContact(index){
         this.selectedContact = index;
+        this.currentMessage = null;
+        this.isVisible = false;
     },
     pushMessage(){
       this.currentDate = DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS	);
@@ -208,7 +211,8 @@ createApp({
         }
       })
       },
-      onClickVisible(){
+      onClickVisible(index){
+        this.currentMessage = index;
         this.isVisible = !this.isVisible;
       }
     }
