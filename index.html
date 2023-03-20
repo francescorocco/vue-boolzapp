@@ -20,17 +20,15 @@
 <body>
 
     <div class="background-container">
-        <header class="green-bar">
-        </header>
 
         <div id="app">
             <main class="big-container">
-                <div class="d-flex internal-container">
+                <div class="d-flex h-100">
 
                     <aside class="sidebar h-100">
 
                         <!--------------- LEFT HEADER BAR --------------------->
-                        <div class="left-header inner-header d-flex align-center justify-between">
+                        <div class="left-header inner-header d-flex align-center justify-between w-100">
                             <div class="d-flex align-center">
                                 <img class="rounded-profile-picture" src="img/avatar_2.jpg" alt="">
                                 <span class="contact-name">Francesco</span>
@@ -44,7 +42,7 @@
                         </div>
 
                         <!-------------------- NOTIFICATION BAR --------------------->
-                        <div class="notification-bar d-flex align-center">
+                        <div class="notification-bar d-flex align-center w-100">
                             <div class="bell-icon">
                                 <i class="fa-solid fa-bell-slash"></i>
                             </div>
@@ -54,15 +52,15 @@
                             </div>
                         </div>
 
-                        <div class="search-bar d-flex align-center">
+                        <div class="search-bar d-flex align-center w-100">
                             <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <input class="input-search" type="text" placeholder="Cerca o inizia una nuova conversazione" />
+                            <input v-model="inputFilter" class="input-search w-100" type="text" placeholder="Cerca o inizia una nuova conversazione" @keyup="filterArrayPerInput"/>
                         </div>
 
                         <!------------------ CONTACTS LIST ---------------------->
                         <div class="contact-list-container">
                             <ul>
-                                <li v-for="(element, index) in contacts">
+                                <li v-for="(element, index) in contacts" v-show="element.visible == true">
                                     <div class="card d-flex align-center justify-between" @click="clickActiveContact(index)">
                                         <div class="d-flex align-center">
                                             <img class="rounded-profile-picture" :src="element.avatar" :alt="element.name">
@@ -111,9 +109,9 @@
                         </div>
 
                         <!------------------------ WRITE NE MESSAGE --------------------------------->
-                        <div class="input-bar d-flex align-center ">
+                        <div class="input-bar d-flex align-center w-100">
                             <i class="fa-regular fa-face-smile"></i>
-                            <input v-model="newMessage" @keyup.enter="pushMessage"  class="message-input-box" type="text" placeholder="Scrivi un messaggio">
+                            <input v-model="newMessage" @keyup.enter="pushMessage" class="message-input-box" type="text" placeholder="Scrivi un messaggio">
                             <i class="fa-solid fa-microphone"></i>
                         </div>
                     </div>

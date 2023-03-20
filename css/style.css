@@ -22,8 +22,6 @@
 }
 
 
-
-
 /*********************** PERSONAL STYLE **************************/
 body{
     font-family: 'Roboto', sans-serif;
@@ -33,17 +31,12 @@ body{
 .background-container{
     position: relative;
     height: 100vh;    
-    background-color: var(--bg-bottom-color);
-}
-
-.green-bar{
-    height: 150px;
-    width: 100%;
-    background-color: var(--bg-header-color); 
+    background: linear-gradient(to bottom, var(--bg-header-color) 150px, var(--bg-bottom-color) 150px 100%);
 }
 
 .big-container {
     width: calc(100% - 300px);
+    min-width: 820px;
     height: calc(100vh - 70px);
     position: absolute;
     top: 30px;
@@ -52,13 +45,7 @@ body{
 }
 
 /********************** APPLICATION PART ************************/
-
-.internal-container{
-    height: 100%;
-}
-
 .inner-header{
-    width: 100%;
     height: 80px;
     background-color: var(--internal-header);
 }
@@ -69,8 +56,6 @@ body{
     padding: 10px;
     border-radius: 50%;
 }
-
-
 
 /****************************** LEFT SIDE ***************************/
 .sidebar{
@@ -91,7 +76,6 @@ body{
 }
 
 .notification-bar{
-    width: 100%;
     height: 100px;
     background-color: var(--notification-bar-bg);
 }
@@ -125,7 +109,6 @@ body{
 }
 
 .search-bar{
-    width: 100%;
     height: 50px;
     background-color: var(--search-bar-bg);
 }
@@ -143,7 +126,6 @@ body{
 .input-search{
     height: 70%;
     border: none;
-    width: 100%;
     margin-right: 10px;
 }
 
@@ -232,12 +214,10 @@ body{
 }
 
 .input-bar {
-    width: 100%;
     height: 80px;
     justify-content: space-around;
     background-color: var(--internal-header);
 }
-
 
 .message-input-box {
     width: 90%;
@@ -277,4 +257,6 @@ body{
     height: 100%;
 }
 
-
+.w-100{
+    width: 100%;
+}

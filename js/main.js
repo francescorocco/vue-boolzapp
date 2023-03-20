@@ -169,6 +169,7 @@ createApp({
 
       selectedContact: 0,
       newMessage: "",
+      inputFilter: "",
     }
   },
   methods: {
@@ -192,6 +193,14 @@ createApp({
         this.contacts[this.selectedContact].messages.push(newObject);
       }, 1000);
     },
-    
-  }
+    filterArrayPerInput(){
+      this.contacts.forEach(element => {
+        if (element.name.toLowerCase().includes(this.inputFilter.toLowerCase())){
+          element.visible = true;
+        }else{
+          element.visible = false;
+        }
+      })
+      }
+    }
 }).mount('#app')
