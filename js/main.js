@@ -169,6 +169,14 @@ createApp({
         }
       ],
 
+      randomAnswers:[
+      'A caval donato non si guarda in bocca',
+      'Do ut des',
+      'Morto un papa se ne fa un altro.',
+      'Non è tutto oro quel che luccica.',
+      'Lontano dagli occhi, lontano dal cuore.',
+      'Chi non risica non rosica.',
+      'Chi semina vento raccoglie tempesta.'],
       selectedContact: 0,
       currentMessage:null,
       newMessage: "",
@@ -202,7 +210,7 @@ createApp({
           this.currentDate = DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS	);
           const newObject = {
             date: this.currentDate,
-            message: 'ok',
+            message: this.randomAnswers[this.randomNumber(this.randomAnswers.length)],
             status: 'recived'
           }
           this.contacts[this.selectedContact].messages.push(newObject);
@@ -236,6 +244,9 @@ createApp({
       changeTheme(){
         this.darkTheme = !this.darkTheme;
         console.log(this.darkTheme)
+      },
+      randomNumber(max){
+        return Math.floor(Math.random() * max);
       }
     }
 }).mount('#app')
