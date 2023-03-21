@@ -176,7 +176,7 @@ createApp({
       currentDate: "",
       smallMenuisVisible: false,
       bigMenuisVisible: false,
-
+      darkTheme: false,
 
     }
   },
@@ -232,6 +232,10 @@ createApp({
       deleteAllChat(){
         this.contacts[this.selectedContact].messages.splice(0, this.contacts[this.selectedContact].messages.length);
         this.bigMenuisVisible = false;
+      },
+      changeTheme(){
+        this.darkTheme = !this.darkTheme;
+        console.log(this.darkTheme)
       }
     }
 }).mount('#app')
