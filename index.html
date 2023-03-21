@@ -67,10 +67,10 @@
 
                                             <div class="card-text-box">
                                                 <h4 class="card-name">{{element.name}}</h4>
-                                                <span class="card-last-message">{{element.messages[element.messages.length-1].message}}</span>
+                                                <span v-if="contacts[index].messages.length != 0" class="card-last-message">{{element.messages[element.messages.length-1].message}}</span>
                                             </div>
                                         </div>
-                                        <div class="last-seen">{{element.messages[element.messages.length-1].date}}</div>
+                                        <div v-if="contacts[index].messages.length != 0" class="last-seen">{{element.messages[element.messages.length-1].date}}</div>
                                     </div>
                                 </li>
                             </ul>
@@ -87,30 +87,33 @@
 
                                 <div class="card-text-box">
                                     <h4 class="card-name">{{contacts[selectedContact].name}}</h4>
-                                    <span class="card-last-message">Ultimo accesso oggi alle 12</span>
+                                    <span v-if="contacts[selectedContact].messages.length != 0" class="card-last-message">{{contacts[selectedContact].messages[contacts[selectedContact].messages.length-1].date}}</span>
                                 </div>
                             </div>
 
                             <div class="icon-box">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 <i class="fa-solid fa-paperclip"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                <i @click="onClickVisibleBigMenu" class="fa-solid fa-ellipsis-vertical"></i>
+                                    <div :class="bigMenuisVisible? 'd-block':''" class="dropdown-content">
+                                        <div @click="deleteAllChat">Elimina chat</div>
+                                    </div>
                             </div>
                         </div>
 
                         <!------------------ MESSAGES IN CURRENT CONVERSATION ------------------->
                         <div class="message-body">
-                                <div v-for="(message, index) in contacts[selectedContact].messages" class="message-box" :class="(message.status == 'sent') ? 'sent-box':'recived-box'">
-                                    <div class="message-card  dropdown" :class="(message.status == 'sent') ? 'sent-message':'recived-message'">
-                                        <i @click="onClickVisible(index)" class="fa-solid fa-chevron-down"></i>
-                                        <div :class="isVisible && currentMessage == index? 'd-block':''" class="dropdown-content">
-                                            <div>Info messaggio</div>
-                                            <div>Cancella Messaggio</div>
-                                        </div>
-                                        <p class="message-text">{{message.message}}</p>
-                                        <div class="time-of-message">{{message.date}}</div>
+                            <div v-for="(message, index) in contacts[selectedContact].messages"  class="message-box" :class="(message.status == 'sent') ? 'sent-box':'recived-box'">
+                                <div class="message-card  dropdown" :class="(message.status == 'sent') ? 'sent-message':'recived-message'">
+                                    <i @click="onClickVisibleSmallMenu(index)" class="fa-solid fa-chevron-down"></i>
+                                    <div :class="smallMenuisVisible && currentMessage == index? 'd-block':''" class="dropdown-content">
+                                        <div>Info messaggio</div>
+                                        <div @click="deleteCurrentMessage(index)">Cancella Messaggio</div>
                                     </div>
+                                    <p class="message-text">{{message.message}}</p>
+                                    <div class="time-of-message">{{message.date}}</div>
                                 </div>
+                            </div>
                         </div>
 
                         <!------------------------ WRITE NE MESSAGE --------------------------------->

@@ -174,33 +174,40 @@ createApp({
       newMessage: "",
       inputFilter: "",
       currentDate: "",
-      isVisible: false,
+      smallMenuisVisible: false,
+      bigMenuisVisible: false,
+
+
     }
   },
   methods: {
     clickActiveContact(index){
         this.selectedContact = index;
         this.currentMessage = null;
-        this.isVisible = false;
+        this.smallMenuisVisible = false;
     },
     pushMessage(){
-      this.currentDate = DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS	);
-      const newObject = {
-        date: this.currentDate,
-        message: this.newMessage,
-        status: 'sent'
-      }
-      this.contacts[this.selectedContact].messages.push(newObject);
-      this.newMessage = '';
-      setTimeout(() => {
+      let controllo = this.newMessage.replace(/ /g, "");
+      if(controllo.length > 0){
+
         this.currentDate = DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS	);
         const newObject = {
           date: this.currentDate,
-          message: 'ok',
-          status: 'recived'
+          message: this.newMessage,
+          status: 'sent'
         }
         this.contacts[this.selectedContact].messages.push(newObject);
-      }, 1000);
+        this.newMessage = '';
+        setTimeout(() => {
+          this.currentDate = DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS	);
+          const newObject = {
+            date: this.currentDate,
+            message: 'ok',
+            status: 'recived'
+          }
+          this.contacts[this.selectedContact].messages.push(newObject);
+        }, 1000);
+      }
     },
     filterArrayPerInput(){
       this.contacts.forEach(element => {
@@ -211,9 +218,22 @@ createApp({
         }
       })
       },
-      onClickVisible(index){
+      onClickVisibleSmallMenu(index){
         this.currentMessage = index;
-        this.isVisible = !this.isVisible;
+        this.smallMenuisVisible = !this.smallMenuisVisible;
+      },
+      onClickVisibleBigMenu(){
+        this.bigMenuisVisible = !this.bigMenuisVisible;
+      },
+      deleteCurrentMessage(){
+        this.contacts[this.selectedContact].messages.splice(this.currentMessage, 1);
+        this.currentMessage = null;
+      },
+      deleteAllChat(){
+        this.contacts[this.selectedContact].messages.splice(0, this.contacts[this.selectedContact].messages.length);
+        this.bigMenuisVisible = false;
       }
     }
 }).mount('#app')
+
+
