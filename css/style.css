@@ -53,7 +53,7 @@ body{
     background: linear-gradient(to bottom, var(--bg-header-color) 150px, var(--bg-bottom-color) 150px 100%);
 }
 
-.background-container.dark{
+.dark .background-container{
     background: linear-gradient(to bottom, var(--dark-bg-header-color) 150px, var(--dark-bg-bottom-color) 150px 100%);
 }
 
@@ -73,7 +73,7 @@ body{
     background-color: var(--internal-header);
 }
 
-.inner-header.dark{
+.dark .inner-header{
     background-color: var(--dark-internal-header);
 }
 
@@ -91,7 +91,7 @@ body{
     background-color: var(--left-sidebar-bg);
 }
 
-.sidebar.dark{
+.dark .sidebar{
     background-color: var(--dark-left-sidebar-bg);
 }
 
@@ -101,7 +101,7 @@ body{
     color: var(--icon-color);
 }
 
-.icon-box.dark {
+.dark .icon-box{
     color: var(--dark-icon-color);
 }
 
@@ -148,7 +148,7 @@ body{
     background-color: var(--search-bar-bg);
 }
 
-.search-bar.dark{
+.dark .search-bar{
     background-color: var(--dark-search-bar-bg);
 }
 
@@ -173,7 +173,7 @@ body{
     border-top:1px solid var(--bg-bottom-color);
 }
 
-.card.dark{
+.dark .card{
     border-bottom:1px solid var(--dark-bg-bottom-color);
     border-top:1px solid var(--dark-bg-bottom-color);
 }
@@ -193,11 +193,11 @@ body{
     color: var(--icon-color);
 }
 
-.card-last-message.dark{
+.dark .card-last-message{
     color: var(--dark-icon-color);
 }
 
-.last-seen {
+.last-seen{
     align-self: baseline;
     padding: 10px 10px;
     text-align: end;
@@ -205,7 +205,7 @@ body{
     color: var(--icon-color);
 }
 
-.last-seen.dark{
+.dark .last-seen{
     color: var(--dark-icon-color);
 }
 
@@ -237,7 +237,7 @@ body{
     background-image: var(--bg-image-light);
 }
 
-.message-body.dark{
+.dark .message-body{
     background-image: var(--dark-bg-image);
 }
 
@@ -245,14 +245,14 @@ body{
     padding: 5px 0;
 }
 
-.message-card {
+.message-card{
     padding: 20px 10px 5px 20px;
     border-radius: 15px;
     width: 40%;
     position: relative;
 }
 
-.message-card i {
+.message-card i{
     position: absolute;
     right: 15px;
     top: 15px;
@@ -287,7 +287,7 @@ body{
     background-color: var(--internal-header);
 }
 
-.input-bar.dark{
+.dark .input-bar{
     background-color: var(--dark-internal-header);
 }
 
@@ -574,6 +574,6 @@ margin: 0 0.75em;
     color: var(--text-color);
 }
 
-.text-color.dark{
+.dark .text-color{
     color: var(--dark-text-color);
 }

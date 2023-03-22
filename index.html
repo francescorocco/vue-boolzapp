@@ -19,136 +19,144 @@
 
 <body>
 
-    
+
     <div id="app">
-            <div class="background-container":class="darkTheme? 'dark':''">
+        <div :class="darkTheme? 'dark':''">
 
-            <div class="button-switch-theme">
-                <label for="theme" class="theme">
-                    <span class="theme__toggle-wrap">
-                        <input @click="changeTheme()"id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="dark">
-                        <span class="theme__fill"></span>
-                        <span class="theme__icon">
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
+
+            <div class="background-container" >
+
+                <div class="button-switch-theme">
+                    <label for="theme" class="theme">
+                        <span class="theme__toggle-wrap">
+                            <input @click="changeTheme()" id="theme" class="theme__toggle" type="checkbox" role="switch"name="theme" value="dark">
+                            <span class="theme__fill"></span>
+                            <span class="theme__icon">
+                                <span class="theme__icon-part"></span>
+                                <span class="theme__icon-part"></span>
+                                <span class="theme__icon-part"></span>
+                                <span class="theme__icon-part"></span>
+                                <span class="theme__icon-part"></span>
+                                <span class="theme__icon-part"></span>
+                                <span class="theme__icon-part"></span>
+                                <span class="theme__icon-part"></span>
+                                <span class="theme__icon-part"></span>
+                            </span>
                         </span>
-                    </span>
-                </label>
-            </div>
+                    </label>
+                </div>
 
-            <main  class="big-container">
-                <div class="d-flex h-100">
+                <main class="big-container">
+                    <div class="d-flex h-100">
 
-                    <aside class="sidebar h-100" :class="darkTheme? 'dark':''">
+                        <aside class="sidebar h-100">
 
-                        <!--------------- LEFT HEADER BAR --------------------->
-                        <div class="left-header inner-header d-flex align-center justify-between w-100" :class="darkTheme? 'dark':''">
-                            <div class="d-flex align-center">
-                                <img class="rounded-profile-picture" src="img/avatar_2.jpg" alt="">
-                                <span class="contact-name text-color" :class="darkTheme? 'dark':''">Francesco</span>
-                            </div>
+                            <!--------------- LEFT HEADER BAR --------------------->
+                            <div class="left-header inner-header d-flex align-center justify-between w-100">
+                                <div class="d-flex align-center">
+                                    <img class="rounded-profile-picture" src="img/avatar_2.jpg" alt="">
+                                    <span class="contact-name text-color">Francesco</span>
+                                </div>
 
-                            <div class="icon-box" :class="darkTheme? 'dark':''">
-                                <i class="fa-solid fa-circle-notch"></i>
-                                <i class="fa-solid fa-message"></i>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                            </div>
-                        </div>
-
-                        <!-------------------- NOTIFICATION BAR --------------------->
-                        <div class="notification-bar d-flex align-center w-100">
-                            <div class="bell-icon">
-                                <i class="fa-solid fa-bell-slash"></i>
-                            </div>
-                            <div>
-                                <span class="notification-text">Ricevi notifiche di nuovi messaggi</span>
-                                <a href="#">Attiva notifiche desktop</a>
-                            </div>
-                        </div>
-
-                        <div class="search-bar d-flex align-center w-100" :class="darkTheme? 'dark':''">
-                            <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <input v-model="inputFilter" class="input-search w-100" type="text" placeholder="Cerca o inizia una nuova conversazione" @keyup="filterArrayPerInput"/>
-                        </div>
-
-                        <!------------------ CONTACTS LIST ---------------------->
-                        <div class="contact-list-container">
-                            <ul>
-                                <li v-for="(element, index) in contacts" v-show="element.visible == true">
-                                    <div class="card d-flex align-center justify-between" @click="clickActiveContact(index)" :class="darkTheme? 'dark':''">
-                                        <div class="d-flex align-center">
-                                            <img class="rounded-profile-picture" :src="element.avatar" :alt="element.name">
-
-                                            <div class="card-text-box">
-                                                <h4 class="card-name text-color" :class="darkTheme? 'dark':''">{{element.name}}</h4>
-                                                <span v-if="contacts[index].messages.length != 0" class="card-last-message" :class="darkTheme? 'dark':''">{{element.messages[element.messages.length-1].message}}</span>
-                                            </div>
-                                        </div>
-                                        <div v-if="contacts[index].messages.length != 0" class="last-seen" :class="darkTheme? 'dark':''">{{element.messages[element.messages.length-1].date}}</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
-
-
-                    <!---------------------- RIGHT HEADER BAR ------------------->
-                    <div class="main-messages h-100">
-                        <div class="right-header inner-header d-flex align-center justify-between" :class="darkTheme? 'dark':''">
-
-                            <div class="d-flex align-center">
-                                <img class="rounded-profile-picture" :src="contacts[selectedContact].avatar" :alt="contacts[selectedContact].name">
-
-                                <div class="card-text-box">
-                                    <h4 class="card-name text-color" :class="darkTheme? 'dark':''">{{contacts[selectedContact].name}}</h4>
-                                    <span v-if="contacts[selectedContact].messages.length != 0" class="card-last-message" :class="darkTheme? 'dark':''">{{contacts[selectedContact].messages[contacts[selectedContact].messages.length-1].date}}</span>
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-circle-notch"></i>
+                                    <i class="fa-solid fa-message"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </div>
                             </div>
 
-                            <div class="icon-box" :class="darkTheme? 'dark':''">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                                <i class="fa-solid fa-paperclip"></i>
-                                <i @click="onClickVisibleBigMenu" class="fa-solid fa-ellipsis-vertical"></i>
+                            <!-------------------- NOTIFICATION BAR --------------------->
+                            <div class="notification-bar d-flex align-center w-100">
+                                <div class="bell-icon">
+                                    <i class="fa-solid fa-bell-slash"></i>
+                                </div>
+                                <div>
+                                    <span class="notification-text">Ricevi notifiche di nuovi messaggi</span>
+                                    <a href="#">Attiva notifiche desktop</a>
+                                </div>
+                            </div>
+
+                            <div class="search-bar d-flex align-center w-100">
+                                <button class="button-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <input v-model="inputFilter" class="input-search w-100" type="text" placeholder="Cerca o inizia una nuova conversazione" @keyup="filterArrayPerInput" />
+                            </div>
+
+                            <!------------------ CONTACTS LIST ---------------------->
+                            <div class="contact-list-container">
+                                <ul>
+                                    <li v-for="(element, index) in contacts" v-show="element.visible == true">
+                                        <div class="card d-flex align-center justify-between" @click="clickActiveContact(index)">
+                                            <div class="d-flex align-center">
+                                                <img class="rounded-profile-picture" :src="element.avatar" :alt="element.name">
+
+                                                <div class="card-text-box">
+                                                    <h4 class="card-name text-color">{{element.name}}</h4>
+                                                    <span v-if="contacts[index].messages.length != 0" class="card-last-message">
+                                                        {{element.messages[element.messages.length-1].message}}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div v-if="contacts[index].messages.length != 0" class="last-seen">{{element.messages[element.messages.length-1].date}}</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </aside>
+
+
+                        <!---------------------- RIGHT HEADER BAR ------------------->
+                        <div class="main-messages h-100">
+                            <div class="right-header inner-header d-flex align-center justify-between">
+
+                                <div class="d-flex align-center">
+                                    <img class="rounded-profile-picture" :src="contacts[selectedContact].avatar":alt="contacts[selectedContact].name">
+
+                                    <div class="card-text-box">
+                                        <h4 class="card-name text-color">{{contacts[selectedContact].name}}</h4>
+                                        <span v-if="contacts[selectedContact].messages.length != 0"class="card-last-message">
+                                            {{contacts[selectedContact].messages[contacts[selectedContact].messages.length-1].date}}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <i class="fa-solid fa-paperclip"></i>
+                                    <i @click="onClickVisibleBigMenu" class="fa-solid fa-ellipsis-vertical"></i>
                                     <div :class="bigMenuisVisible? 'd-block':''" class="dropdown-content">
                                         <div @click="deleteAllChat">Elimina chat</div>
                                     </div>
-                            </div>
-                        </div>
-
-                        <!------------------ MESSAGES IN CURRENT CONVERSATION ------------------->
-                        <div class="message-body" :class="darkTheme? 'dark':''">
-                            <div v-for="(message, index) in contacts[selectedContact].messages"  class="message-box" :class="(message.status == 'sent') ? 'sent-box':'recived-box'">
-                                <div class="message-card  dropdown" :class="(message.status == 'sent') ? 'sent-message':'recived-message'">
-                                    <i @click="onClickVisibleSmallMenu(index)" class="fa-solid fa-chevron-down"></i>
-                                    <div :class="smallMenuisVisible && currentMessage == index? 'd-block':''" class="dropdown-content">
-                                        <div>Info messaggio</div>
-                                        <div @click="deleteCurrentMessage(index)">Cancella Messaggio</div>
-                                    </div>
-                                    <p class="message-text">{{message.message}}</p>
-                                    <div class="time-of-message">{{message.date}}</div>
                                 </div>
                             </div>
+
+                            <!------------------ MESSAGES IN CURRENT CONVERSATION ------------------->
+                            <div class="message-body">
+                                <div v-for="(message, index) in contacts[selectedContact].messages" class="message-box" :class="(message.status == 'sent') ? 'sent-box':'recived-box'">
+                                    <div class="message-card  dropdown" :class="(message.status == 'sent') ? 'sent-message':'recived-message'">
+                                        <i @click="onClickVisibleSmallMenu(index)" class="fa-solid fa-chevron-down"></i>
+                                        <div :class="smallMenuisVisible && currentMessage == index? 'd-block':''" class="dropdown-content">
+                                            <div>Info messaggio</div>
+                                            <div @click="deleteCurrentMessage(index)">Cancella Messaggio</div>
+                                        </div>
+                                        <p class="message-text">{{message.message}}</p>
+                                        <div class="time-of-message">{{message.date}}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!------------------------ WRITE NEW MESSAGE --------------------------------->
+                            <div class="input-bar d-flex align-center w-100">
+                                <i class="fa-regular fa-face-smile"></i>
+                                <input v-model="newMessage" @keyup.enter="pushMessage" class="message-input-box" type="text" placeholder="Scrivi un messaggio">
+                                <i class="fa-solid fa-microphone"></i>
+                            </div>
                         </div>
 
-                        <!------------------------ WRITE NE MESSAGE --------------------------------->
-                        <div class="input-bar d-flex align-center w-100" :class="darkTheme? 'dark':''">
-                            <i class="fa-regular fa-face-smile"></i>
-                            <input v-model="newMessage" @keyup.enter="pushMessage" class="message-input-box" type="text" placeholder="Scrivi un messaggio">
-                            <i class="fa-solid fa-microphone"></i>
-                        </div>
+
+
                     </div>
-
-
-
-                </div>
-            </main>
+                </main>
+            </div>
         </div>
     </div>
 

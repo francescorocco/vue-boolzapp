@@ -236,6 +236,7 @@ createApp({
       deleteCurrentMessage(){
         this.contacts[this.selectedContact].messages.splice(this.currentMessage, 1);
         this.currentMessage = null;
+        this.smallMenuisVisible = false;
       },
       deleteAllChat(){
         this.contacts[this.selectedContact].messages.splice(0, this.contacts[this.selectedContact].messages.length);
